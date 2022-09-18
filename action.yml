@@ -1,6 +1,6 @@
 name: bump-homebrew-formula
 description: "Bump Homebrew formula after a new release"
-author: "@mislav"
+author: "@xasopheno"
 runs:
   using: node16
   main: "./lib/index.js"
@@ -28,8 +28,6 @@ inputs:
     description: The git commit message template to use when updating the formula
     default: |
       {{formulaName}} {{version}}
-
-      Created by https://github.com/mislav/bump-homebrew-formula-action
 branding:
   icon: box
   color: orange

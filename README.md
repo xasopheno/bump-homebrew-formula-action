@@ -1,3 +1,5 @@
+Forked from mislav/bump-homebrew-formula-action
+
 An action that bumps a Homebrew formula after a new release.
 
 Minimal usage example:
@@ -12,7 +14,7 @@ jobs:
     name: Bump Homebrew formula
     runs-on: ubuntu-latest
     steps:
-      - uses: mislav/bump-homebrew-formula-action@v2
+      - uses: xasopheno/weresocool-bump-homebrew-formula
         with:
           # A PR will be sent to github.com/Homebrew/homebrew-core to update this formula:
           formula-name: my_formula
@@ -41,7 +43,7 @@ jobs:
         id: extract-version
         run: |
           printf "::set-output name=%s::%s\n" tag-name "${GITHUB_REF#refs/tags/}"
-      - uses: mislav/bump-homebrew-formula-action@v2
+      - uses: xasopheno/weresocool-bump-homebrew-formula
         if: "!contains(github.ref, '-')" # skip prereleases
         with:
           formula-name: my_formula
@@ -52,7 +54,7 @@ jobs:
           commit-message: |
             {{formulaName}} {{version}}
 
-            Created by https://github.com/mislav/bump-homebrew-formula-action
+            Created by https://github.com/xasopheno/weresocool-bump-homebrew-formula
         env:
           COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -110,8 +112,6 @@ archive for this release.
   Defaults to:
   ```
   {{formulaName}} {{version}}
-
-  Created by https://github.com/mislav/bump-homebrew-formula-action
   ```
 
 
@@ -176,7 +176,7 @@ jobs:
     name: Bump Homebrew formula
     runs-on: ubuntu-latest
     steps:
-      - uses: mislav/bump-homebrew-formula-action@v2
+      - uses: xasopheno/weresocool-bump-homebrew-formula
         with:
           formula-name: my_formula
           tag-name: ${{ github.event.inputs.tag-name }}
